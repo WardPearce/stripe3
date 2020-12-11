@@ -28,7 +28,7 @@ class RouteBase:
         ]
 
         for var_name in routes:
-            value = "{}{}/{}".format(
+            value = "{}{}{}".format(
                 self.route,
                 "/" + self._prefix if self._prefix else "",
                 getattr(

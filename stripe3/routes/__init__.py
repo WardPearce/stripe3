@@ -1,29 +1,54 @@
+from re import sub
+
 from .core import (
     BalanceRoute,
     ChargesRoute,
     CustomersRoute,
     DisputesRoute,
     EventsRoute,
-    FilesRoute
+    FilesRoute,
+    FileLinksRoute,
+    MandatesRoute,
+    PaymentIntentsRoute,
+    SetupIntentsRoute,
+    SetupAttemptsRoute,
+    PayoutsRoute,
+    ProductsRoute,
+    PricesRoute,
+    RefundsRoute,
+    TokensRoute
 )
 
 
-BALANCE_ROUTE = BalanceRoute()
-CHARGES_ROUTE = ChargesRoute()
-CUSTOMERS_ROUTE = CustomersRoute()
-DISPUTES_ROUTE = DisputesRoute()
-EVENTS_ROUTE = EventsRoute()
-FILES_ROUTE = FilesRoute()
-
-
 ROUTES = [
-    BALANCE_ROUTE,
-    CHARGES_ROUTE,
-    CUSTOMERS_ROUTE,
-    DISPUTES_ROUTE,
-    EVENTS_ROUTE,
-    FILES_ROUTE
+    BalanceRoute,
+    ChargesRoute,
+    CustomersRoute,
+    DisputesRoute,
+    EventsRoute,
+    FilesRoute,
+    FileLinksRoute,
+    MandatesRoute,
+    PaymentIntentsRoute,
+    SetupIntentsRoute,
+    SetupAttemptsRoute,
+    PayoutsRoute,
+    ProductsRoute,
+    PricesRoute,
+    RefundsRoute,
+    TokensRoute
 ]
 
+
 for route in ROUTES:
+    route = route()
+
+    var_name = sub(
+        "([A-Z][a-z]+)",
+        r" \1", sub("([A-Z]+)",
+        r" \1", route.__class__.__name__  # noqa: E128
+    )).split()  # noqa: E124
+
     route.format()
+
+    globals()["_".join(var_name).upper()] = route

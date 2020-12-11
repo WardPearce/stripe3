@@ -8,34 +8,121 @@ class BalanceRoute(RouteBase):
 
 
 class ChargesRoute(RouteBase):
-    create = "/charges"
-    list = "/charges"
-    capture = "/charges/{}/capture"
-    get = "/v1/charges/{}"
-    update = "/v1/charges/{}"
+    _prefix = "/charges"
+
+    create = ""
+    list = ""
+    capture = "/{}/capture"
+    get = "/{}"
+    update = "/{}"
 
 
 class CustomersRoute(RouteBase):
-    create = "/customers"
-    get = "/customers/{}"
-    update = "/customers/{}"
-    delete = "/customers/{}"
-    list = "/customers"
+    _prefix = "/customers"
+
+    create = ""
+    get = "/{}"
+    update = "/{}"
+    delete = "/{}"
+    list = ""
 
 
 class DisputesRoute(RouteBase):
-    get = "/disputes/{}"
-    update = "/disputes/{}"
-    close = "/disputes/{}/close"
-    list = "/disputes"
+    _prefix = "/disputes"
+
+    get = "/{}"
+    update = "/{}"
+    close = "/{}/close"
+    list = "/"
 
 
 class EventsRoute(RouteBase):
-    get = "/events/{}"
-    list = "/events"
+    _prefix = "/events"
+
+    get = "/{}"
+    list = ""
 
 
 class FilesRoute(RouteBase):
+    _prefix = "/files"
+
     _create = "https://files.stripe.com/v1/files"
-    get = "/files/{}"
-    list = "/files"
+
+    get = "/{}"
+    list = ""
+
+
+class FileLinksRoute(RouteBase):
+    _prefix = "/file_links"
+
+    post = ""
+    id = "/{}"
+
+
+class MandatesRoute(RouteBase):
+    get = "/mandates/{}"
+
+
+class PaymentIntentsRoute(RouteBase):
+    _prefix = "/payment_intents"
+
+    id = "/{}"
+    confirm = "/{}/confirm"
+    capture = "/{}/capture"
+    cancel = "/{}/cancel"
+    post = ""
+    get = ""
+
+
+class SetupIntentsRoute(RouteBase):
+    _prefix = "/setup_intents"
+
+    id = "/{}"
+    confirm = "/{}/confirm"
+    cancel = "/{}/cancel"
+
+    get = ""
+    post = ""
+
+
+class SetupAttemptsRoute(RouteBase):
+    get = "/setup_attempts"
+
+
+class PayoutsRoute(RouteBase):
+    _prefix = "/payouts"
+
+    id = "/{}"
+    cancel = "/{}/cancel"
+    reverse = "/{}/reverse"
+
+
+class ProductsRoute(RouteBase):
+    _prefix = "/products"
+
+    id = "/{}"
+    post = ""
+    get = ""
+
+
+class PricesRoute(RouteBase):
+    _prefix = "/prices"
+
+    id = "/{}"
+    get = ""
+    post = ""
+
+
+class RefundsRoute(RouteBase):
+    _prefix = "/refunds"
+
+    id = "/{}"
+    get = ""
+    post = ""
+
+
+class TokensRoute(RouteBase):
+    _prefix = "/tokens"
+
+    post = ""
+    get = "/{}"
