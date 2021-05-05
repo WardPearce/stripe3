@@ -19,6 +19,16 @@ from .core import (
     TokensRoute
 )
 
+from .payment_methods import (
+    PaymentMethodsRoute,
+    BankAccountsRoute,
+    CardsRoute,
+    SourcesRoute,
+    SourcesCustomer
+)
+
+from .sessions import SessionsRoute
+
 
 ROUTES = [
     BalanceRoute,
@@ -36,7 +46,13 @@ ROUTES = [
     ProductsRoute,
     PricesRoute,
     RefundsRoute,
-    TokensRoute
+    TokensRoute,
+    PaymentMethodsRoute,
+    BankAccountsRoute,
+    CardsRoute,
+    SourcesRoute,
+    SourcesCustomer,
+    SessionsRoute
 ]
 
 

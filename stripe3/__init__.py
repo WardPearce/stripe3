@@ -2,20 +2,16 @@ from httpx import BasicAuth, AsyncClient, Client
 
 
 class Base:
-    def __init__(self, api_key: str, test_mode: bool = False) -> None:
+    def __init__(self, api_key: str) -> None:
         """Used to interact with the Stripe API.
 
         Parameters
         ----------
         api_key : str
-        test_mode : bool, optional
-            by default False
         """
 
         self._basic_auth = BasicAuth(
-            username="{}_{}".format(
-                "sk_test" if test_mode else "sk_live", api_key
-            )
+            username=api_key
         )
 
 
