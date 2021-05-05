@@ -1,5 +1,8 @@
 from httpx import BasicAuth, AsyncClient, Client
 
+from .models.core import BalanceModel
+from .routes import BALANCE_ROUTE
+
 
 class Base:
     def __init__(self, api_key: str) -> None:
@@ -29,6 +32,9 @@ class Awaiting(Base):
         super().__init__(*args, **kwargs)
 
         self._client = AsyncClient(auth=self._basic_auth)
+
+    async def balance(self) -> BalanceModel:
+        pass
 
 
 class Blocking(Base):
